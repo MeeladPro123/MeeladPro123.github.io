@@ -1,0 +1,18 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the site in the jekyll/builder container
+      run: |
+        dotnet nuget add source --username MeeladPro123 --password ${{ secrets.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 }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/NAMESPACE/index.json"
